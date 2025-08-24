@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sorry!</title>
+  </head>
+  <body>
+    <div class="question-container container">
+      <img class="sorry-gif" src="sorry.gif" alt="Sorry" />
+
+      <h2 class="question">Will you forgive me?</h2>
+      <div class="button-container">
+        <button class="yes-btn btn js-yes-btn">Yes</button>
+        <button class="no-btn btn js-no-btn">No</button>
+      </div>
+    </div>
+    <div class="result-container container">
+      <video
+        class="gif-result"
+        src="cute_love_gif.mp4"
+        autoplay
+        loop
+        muted
+      ></video>
+      <h2>I knew it😍!</h2>
+      <h2>Thank you for forgiving me ❤️!</h2>
+    </div>
+
+    <div class="cssload-main">
+      <div class="cssload-heart">
+        <span class="cssload-heartL"></span>
+        <span class="cssload-heartR"></span>
+        <span class="cssload-square"></span>
+      </div>
+      <div class="cssload-shadow"></div>
+    </div>
+
+    <script>
+      const questionContainer = document.querySelector(".question-container");
+      const resultContainer = document.querySelector(".result-container");
+      const gifResult = document.querySelector(".gif-result");
+      const heartLoader = document.querySelector(".cssload-main");
+      const yesBtn = document.querySelector(".js-yes-btn");
+      const noBtn = document.querySelector(".js-no-btn");
+
+      noBtn.addEventListener("mouseover", () => {
+        const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+        const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+      });
+
+      noBtn.addEventListener("click", () => {
+        const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+        const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY}px`;
+      });
+
+      yesBtn.addEventListener("click", () => {
+        questionContainer.style.display = "none";
+        heartLoader.style.display = "inherit";
+
+        setTimeout(() => {
+          heartLoader.style.display = "none";
+          resultContainer.style.display = "inherit";
+          gifResult.play();
+        }, 3000);
+      });
+    </script>
+  </body>
+</html>
